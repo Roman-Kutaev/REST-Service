@@ -17,7 +17,6 @@ public class AdminController {
 
     @GetMapping("/{login}/{password}")
     public ResponseEntity<Admin> existenceAdmin(@PathVariable String login, @PathVariable String password){
-        System.out.println("adminService.existence(login,password) = " + adminService.existence(login, password));
         return ResponseEntity.ok(new Admin(login,password));
     }
 }

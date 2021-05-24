@@ -10,4 +10,4 @@ insert into users(id, first_name, last_name) values
 (9, 'Филипп', 'Киркоров'),
 (10, 'Валентин', 'Валентинов');
 
-insert into admins(id, login, password) values ( 1,'admin','admin');
+insert into admins(id, login, password) values ( 1,'Admin','Admin');
