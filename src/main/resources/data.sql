@@ -9,3 +9,5 @@ insert into users(id, first_name, last_name) values
 (8, 'Василий', 'Некрасов'),
 (9, 'Филипп', 'Киркоров'),
 (10, 'Валентин', 'Валентинов');
+
+insert into admins(id, login, password) values ( 1,'admin','admin');
