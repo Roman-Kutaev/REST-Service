@@ -2,7 +2,6 @@ package com.example.service;
 
 import com.example.entity.Admin;
 import com.example.repository.AdminRepository;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service

@@ -20,23 +20,17 @@ public class UserController {
         this.userService = userService;
     }
 
-
     @GetMapping
     public List<User> allUser(){
         return userService.findAllUser();
     }
 
-    @GetMapping(path = "/{id}")
-    public ResponseEntity<User> findUser(@PathVariable int id){
-        return ResponseEntity.ok(userService.findUser(id));
-    }
-
-    @PostMapping
+    @PostMapping(path = "/admin")
     public ResponseEntity<User> addUser(@RequestBody User user){
         return ResponseEntity.status(HttpStatus.OK).body(userService.create(user));
     }
 
-    @PutMapping
+    @PutMapping(path = "/admin")
     public ResponseEntity<User> update(@RequestBody User user){
         if (userService.update(user) != null){
             return ResponseEntity.ok().build();
@@ -45,7 +39,7 @@ public class UserController {
         }
     }
 
-    @DeleteMapping(path = "/{id}")
+    @DeleteMapping(path = "/admin/{id}")
     public ResponseEntity<User> delete(@PathVariable int id){
         User user = userService.delete(id);
         if (user != null){
