@@ -20,20 +20,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .roles("ADMIN");
     }
 
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//
-//        http
-//                .httpBasic()
-//                .and()
-//                .authorizeRequests()
-//                .antMatchers("/admin").hasRole("ADMIN")
-//                .anyRequest().permitAll()
-//                .and()
-//                .csrf().disable();
-//
-//    }
-
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -44,10 +30,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/home")
+                .antMatchers("/**/home")
                 .permitAll()
-                .and()
-                .authorizeRequests()
                 .anyRequest()
                 .authenticated()
                 .and()
