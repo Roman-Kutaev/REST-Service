@@ -20,34 +20,41 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .roles("ADMIN");
     }
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-
-        http
-                .httpBasic()
-                .and()
-                .authorizeRequests()
-                .antMatchers("/admin").hasRole("ADMIN")
-                .anyRequest().permitAll()
-                .and()
-                .csrf().disable();
-
-    }
+//    @Override
+//    protected void configure(HttpSecurity http) throws Exception {
+//
+//        http
+//                .httpBasic()
+//                .and()
+//                .authorizeRequests()
+//                .antMatchers("/admin").hasRole("ADMIN")
+//                .anyRequest().permitAll()
+//                .and()
+//                .csrf().disable();
+//
+//    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        System.out.println();
         return new BCryptPasswordEncoder();
     }
 
 
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//        http.csrf().disable()
-//                .authorizeRequests()
-//                .antMatchers("/").permitAll()
-//                .antMatchers("/admin/**").authenticated()
-//                .and()
-//                .httpBasic();
-//    }
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/home")
+                .permitAll()
+                .and()
+                .authorizeRequests()
+                .antMatchers("/admin")
+                .permitAll()
+                .and()
+                .authorizeRequests()
+                .anyRequest()
+                .authenticated()
+                .and()
+                .httpBasic();
+    }
 }
